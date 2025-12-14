@@ -1,0 +1,14 @@
+-- leaves table
+CREATE TABLE IF NOT EXISTS leaves (
+  leave_id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE NOT NULL,
+  reason VARCHAR(255),
+  status ENUM('PENDING','APPROVED','REJECTED') DEFAULT 'PENDING',
+  approved_by INT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(user_id),
+  FOREIGN KEY (approved_by) REFERENCES users(user_id)
+);

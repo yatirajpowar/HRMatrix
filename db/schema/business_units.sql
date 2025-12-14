@@ -1,0 +1,9 @@
+-- business_units table
+CREATE TABLE IF NOT EXISTS business_units (
+  bu_id INT PRIMARY KEY AUTO_INCREMENT,
+  company_id INT NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (company_id) REFERENCES companies(company_id)
+);
