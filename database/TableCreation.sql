@@ -1,0 +1,42 @@
+CREATE TABLE companies (
+    company_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(150) NOT NULL,
+    email VARCHAR(100),
+    address TEXT,
+
+    default_leaves INT DEFAULT 12,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE business_units (
+    bu_id INT PRIMARY KEY AUTO_INCREMENT,
+    company_id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (company_id) REFERENCES companies(company_id)
+);
+
+
+CREATE TABLE leaves (
+    leave_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    reason VARCHAR(255),
+
+    status ENUM('PENDING','APPROVED','REJECTED') DEFAULT 'PENDING',
+    approved_by INT NULL,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (approved_by) REFERENCES users(user_id)
+);
