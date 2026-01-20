@@ -1,11 +1,9 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: rgb(125, 148, 230);
-}
 
-.mybox{
-    background: rgb(51, 65, 197);
+body {
+  @apply bg-blue-50;
 }
