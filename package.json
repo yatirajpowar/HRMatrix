@@ -2,13 +2,15 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "add:test-user": "node scripts/add_test_user.js",
-    "db:schema:print": "node scripts/apply_schema.js",
-    "db:schema:apply": "node scripts/apply_schema.js --apply"
-  },
+  "main": "src/server.js",
+"scripts": {
+  "start": "node --env-file=.env server.js",
+  "dev": "nodemon server.js",
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "add:test-user": "node scripts/add_test_user.js",
+  "db:schema:print": "node scripts/apply_schema.js",
+  "db:schema:apply": "node scripts/apply_schema.js --apply"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
