@@ -1,6 +1,6 @@
 // src/models/User.js
-const db = require("../config/db");
-const bcrypt = require("bcrypt");
+import db from "../config/db.js";
+import bcrypt from "bcrypt";
 
 const createUser = async ({ name, email, password, role = "employee" }) => {
   try {
@@ -19,4 +19,7 @@ const createUser = async ({ name, email, password, role = "employee" }) => {
   }
 };
 
-module.exports = { createUser };
+
+export default {
+  createUser
+};

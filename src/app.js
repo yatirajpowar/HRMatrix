@@ -1,16 +1,15 @@
-const express = require("express");
-const cors = require("cors");
-
+// src/app.js
+import express from "express";
+import cors from "cors";
+import authRouter from './routes/auth.js'; // always include .js in ES modules
+// import db from './config/db.js'
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
+// Routes
+app.use('/api/auth', authRouter);
 
-// app.use("/api/auth", require("./routes/auth.routes"));
-// app.use("/api/user", require("./routes/user.routes"));
-// app.use("/api/company", require("./routes/company.routes"));
-// app.use("/api/user", require("./routes/employe.routes"));
-// app.use("/api/company", require("./routes/admin.routes"));
-// app.use("/api/leave", require("./routes/leave.routes"));
-
-module.exports = app;
+// ✅ Export using ES module default export
+export default app;
